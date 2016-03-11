@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud in Django</title>
+    <link href="//cdn.bootcss.com/bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    {% block othercss %}{% endblock %}
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <script src="/static/js/jquery.imagesloaded.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    {% block otherjs %}{% endblock %}
+</body>
+</html>

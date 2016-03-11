@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block nav %}
+<li><a href="/">首页</a></li>
+<li class="active"><a href="/mypic">我的图片</a></li>
+<li><a href="/share">分享</a></li>
+{% endblock %} {% block body %}
+<div class="container">
+    <form action="/upload" method="post" enctype="multipart/form-data" style="margin-left: 5%">
+        {% csrf_token %}
+        <input type="file" name="your_file" />
+        <input type="submit" value="上传文件" />
+    </form>
+    <div class="example">
+        <div id="main" role="main">
+            <ul id="tiles">
+                {% for file in filelist %}
+                <li class="pics">
+                    <img src="/pic/{{ file }}">
+                    <div class="row-fluid" style="display:none">
+                        <button class="span4 btn btn-info dlbtn">
+                            <p style="color:white"><a href="/dl/{{ file }}">下载</a></p>
+                        </button>
+                        <button class="span4 btn btn-danger delbtn">
+                            <p style="color:white0" file="{{ file }}">删除</p>
+                        </button>
+                        <button class="span4 btn btn-warning sharebtn" data-toggle="modal">
+                            <p style="color:white" file="{{ file }}">分享</p>
+                        </button>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="modal hide fade" id="myModal">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>分享</h3>
+      </div>
+      <div class="modal-body">
+        <p id="IVText"></p>
+      </div>
+      <div class="modal-footer">
+        <a data-dismiss="modal" class="btn">关闭</a>
+        <a id="stopshare" class="btn btn-info">停止分享</a>
+        <a id="startshare" class="btn btn-info">分享</a>
+      </div>
+    </div>
+</div>
+
+{% endblock %} {% block otherjs %}
+<script src="/static/js/jquery.wookmark.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-popover.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/2.3.1/js/bootstrap-tooltip.min.js"></script>
+<script src="/static/js/mypic_handler.js"></script>
+{% endblock %}

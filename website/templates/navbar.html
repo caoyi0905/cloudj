@@ -1,0 +1,23 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="/">Cloud in Django</a>
+            <ul class="nav">
+                <li class="{% ifequal url 'index'  %}active{% endifequal %}"><a href="/">首页</a></li>
+                <li class="{% ifequal url 'mypic' %}active{% endifequal %}"><a href="/mypic">我的图片</a></li>
+                <li class="{% ifequal url 'share' %}active{% endifequal %}"><a href="/share">提取照片</a></li>
+            </ul>
+            <ul class="nav pull-right">
+                {% if username %}
+                 <li><a>{{ username }}</a></li>
+                {% endif %}
+                {% if notLogin %}
+                <li><a href="/login">登录</a></li>
+                {% else %}
+                <li><a href="/logout">注销</a></li>
+                {% endif %}
+                <li><a href="/signup">注册</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

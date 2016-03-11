@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="input-append" style="margin: auto;margin-top: 13%;width: 400px;display:block">
+    {% if msg %}
+    <div class="alert alert-success">
+      <h3>{{ msg }}</h3>
+    </div>
+    {% endif %}
+    <form method="post" >
+        <label>请输入提取码:</label>
+        <input name="key" type="text" class="input-bind"/>
+        <input type="submit" value="提交" class="btn input-bind"/>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}
